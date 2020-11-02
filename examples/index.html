@@ -2,27 +2,101 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>模型上传</title>
-    <script src="../dist/modelbox-sdk.js"></script>
-    <script>
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>模型上传</title>
+  <!-- 页面样式框架 -->
+  <script src="https://www.layuicdn.com/layui/layui.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui/css/layui.css"/>
+  <!-- 页面样式框架 -->
+  <!-- 引入 sdk -->
+  <script src="../dist/modelbox-sdk.js"></script>
+
+  <style>
+      .container {
+          width: 80%;
+          margin: 0 auto;
+      }
+  </style>
 </head>
 
 <body>
-    <form action="">
+<div class="container">
+  <h1>modelbox-sdk</h1>
+  <hr>
+  <blockquote class="layui-elem-quote">
+    本页面用于展示模型上传的基础能力，代码仓库地址：
+    <a href="https://github.com/wangerzi/modelbox-sdk" target="_blank">https://github.com/wangerzi/modelbox-sdk</a>
+  </blockquote>
+  <form action="" class="layui-form" onsubmit="return handleSubmit()" id="modelForm">
+    <div class="layui-form-item">
+      <label class="layui-form-label">模型类型</label>
+      <div class="layui-input-block">
         <select name="type">
-            <option value=".stl">STL模型(.stl)</option>
-            <option value=".stp">STP模型(.stp)</option>
-            <option value=".stp">STP模型(.stp)</option>
-            <option value=".zip">obj压缩文件(.zip)</option>
+          <option value="stl">STL模型(.stl/.zip)</option>
+          <option value="stp">STP模型(.stp/.step/.zip)</option>
+          <option value="igs">IGS模型(.igs/.iges/.zip)</option>
+          <option value="fbx">FBX模型(.stp/.zip)</option>
+          <option value="obj">OBJ模型(.obj/.zip)</option>
         </select>
-        <input type="file" name="model">
-        <button>上传模型</button>
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-form-label">选择文件</div>
+      <div class="layui-input-block">
+        <input type="file" name="model" required>
+      </div>
+    </div>
 
-        <button>保存表单</button>
-    </form>
+    <div class="layui-form-item">
+      <div class="layui-input-block">
+        <button class="layui-btn layui-btn-primary">保存表单</button>
+      </div>
+    </div>
+  </form>
+
+</div>
 </body>
+
+<script>
+  layui.use(['form'], function () {
+  });
+
+  /**
+   * 处理表单提交
+   */
+  function handleSubmit() {
+    var form = document.getElementById('modelForm');
+    // 1. 拿到文件数据和类型
+    var file = form.querySelector('input[type="file"]');
+    var type = form.querySelector('select[name="type"] option:checked').value;
+
+    if (!file.files || !file.files.length) {
+      return false;
+    }
+    // 2. 拿到回调之后提交数据库保存
+    MODELBOX_SDK.uploadModel({
+      file: file.files[0],
+      type: type,
+      config: {
+        'name': "Define Model Name",
+        'comment': "No Comment",
+      },
+      modelConfig: {
+        env: '#fff',
+      },
+      success: function (res) {
+        console.log(res);
+      },
+      error: function (msg) {
+        // 这里用到了 UI 框架的提示组件 layer ，根据具体业务情况处理即可
+        layui.use(['layer'], function () {
+          layui.layer.alert(msg);
+        })
+      }
+    });
+    return false;
+  }
+</script>
 
 </html>

@@ -33,3 +33,11 @@ export async function post(url, postData) {
         });
     }));
 }
+
+export async function putObject(url, body) {
+    axios.put(url, body, {
+        headers: {
+            'Content-Type': '',
+        }
+    })
+}
