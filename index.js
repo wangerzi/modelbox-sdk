@@ -84,17 +84,10 @@ function makeObject(object) {
         // 2. handle upload file callback
         // 2. save model config
         config['source_file_id'] = fileId;
-        api.uploadComplete(fileId).then(() => {
-          api.createModel(config).then(d => {
-            if (success && success.apply) {
-              success.apply(this, [d])
-            }
-          });
-        }).catch(res => {
-          if (error && error.apply) {
-            error.apply(this, ['Generate upload url failed:' + res])
+        api.createModel(config).then(d => {
+          if (success && success.apply) {
+            success.apply(this, [d])
           }
-          return false;
         });
       });
     }).catch(res => {
@@ -106,6 +99,7 @@ function makeObject(object) {
   }
 
   object.remainAccessTime = api.remainAccessTime;
+  object.updateToken = api.updateToken;
   object.uploadModel = uploadModel
   object.version = VERSION
 

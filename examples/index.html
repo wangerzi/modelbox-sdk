@@ -42,6 +42,18 @@
       </div>
     </div>
     <div class="layui-form-item">
+      <div class="layui-form-label">模型名称</div>
+      <div class="layui-input-block">
+        <input type="text" name="name" value="Demo model" required class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-form-label">备注</div>
+      <div class="layui-input-block">
+        <input type="text" name="comment" value="No comment" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
       <div class="layui-form-label">选择文件</div>
       <div class="layui-input-block">
         <input type="file" name="model" required>
@@ -74,19 +86,38 @@
     if (!file.files || !file.files.length) {
       return false;
     }
+
+    var name = form.querySelector('input[name="name"]').value;
+    var comment = form.querySelector('input[name="comment"]').value;
+
     // 2. 拿到回调之后提交数据库保存
+    MODELBOX_SDK.updateToken('5c06b6b8a548d8911e3ccdbdc518fac6');
+    debugger;
     MODELBOX_SDK.uploadModel({
       file: file.files[0],
       type: type,
       config: {
-        'name': "Define Model Name",
-        'comment': "No Comment",
+        'name': name,
+        'comment': comment,
       },
       modelConfig: {
         env: '#fff',
       },
       success: function (res) {
-        console.log(res);
+        // res.iframe_url 表示嵌入网页的 url
+        // res.source_file_url 表示源资源的下载 url
+        layui.layer.open({
+          type: 2,
+          title: name,
+          btn: [
+            '下载源文件'
+          ],
+          yes: function () {
+            window.open(res.source_file_url);
+          },
+          area: ['500px', '400px'],
+          content: res.iframe_url,
+        });
       },
       error: function (msg) {
         // 这里用到了 UI 框架的提示组件 layer ，根据具体业务情况处理即可

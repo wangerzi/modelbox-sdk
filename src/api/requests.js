@@ -2,11 +2,19 @@ import * as axios from 'axios';
 import qs from 'qs';
 
 export const API_URL = 'http://api.mobox3d.com';
-export const PREVIEW_URL = 'http://preview.mobox3d.com';
+let API_TOKEN = ''
 
-export async function get(url) {
+export function setToken(token) {
+    API_TOKEN = token
+}
+export async function get(url, option = {}) {
     return new Promise(((resolve, reject) => {
-        axios.get(url).then((res) => {
+        option = Object.assign(option, {
+            headers: {
+                "X-api-key": API_TOKEN
+            }
+        })
+        axios.get(url, option).then((res) => {
             const data = res.data;
             if (data.code !== 200) {
                 reject(data.message);
@@ -19,9 +27,14 @@ export async function get(url) {
     }));
 }
 
-export async function post(url, postData) {
+export async function post(url, postData, option = {}) {
     return new Promise(((resolve, reject) => {
-        axios.post(url, qs.stringify(postData)).then((res) => {
+        option = Object.assign(option, {
+            headers: {
+                "X-api-key": API_TOKEN
+            }
+        })
+        axios.post(url, qs.stringify(postData), option).then((res) => {
             const data = res.data;
             if (data.code !== 200) {
                 reject(data.message, data);

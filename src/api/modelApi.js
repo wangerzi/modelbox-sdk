@@ -1,9 +1,7 @@
-import {API_URL, post, putObject} from "./requests"
+import {API_URL, post, putObject, setToken} from "./requests"
 
-let API_TOKEN = ''
-
-function setToken(token) {
-  API_TOKEN = token
+async function updateToken(token) {
+  return setToken(token)
 }
 
 async function createFile(config = {}) {
@@ -12,7 +10,7 @@ async function createFile(config = {}) {
     ext: '.zip'
   }, config)
   return new Promise((resolve, reject) => {
-    post(API_URL + '/file/Index/create', config).then(res => {
+    post(API_URL + '/file/Fileapi/create', config).then(res => {
       resolve(res.data);
     }).catch(res => {
       reject(res)
@@ -26,7 +24,7 @@ async function uploadComplete(id) {
     id,
   }
   return new Promise((resolve, reject) => {
-    post(API_URL + '/file/Index/uploadComplete', config).then(res => {
+    post(API_URL + '/file/Fileapi/uploadComplete', config).then(res => {
       resolve(res.data);
     }).catch(res => {
       reject(res)
@@ -35,7 +33,7 @@ async function uploadComplete(id) {
 }
 async function remainAccessTime() {
   return new Promise(((resolve, reject) => {
-    post(API_URL + '/model/ModelApi/remainAccessTime', config).then(res => {
+    post(API_URL + '/model/Fileapi/remainAccessTime', config).then(res => {
       resolve(res.data);
     }).catch(res => {
       reject(res)
@@ -68,7 +66,7 @@ async function putFile(url, file) {
 }
 
 export default {
-  setToken,
+  updateToken,
   uploadComplete,
   createFile,
   remainAccessTime,
