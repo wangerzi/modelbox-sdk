@@ -88,7 +88,21 @@ function makeObject(object) {
           if (success && success.apply) {
             success.apply(this, [d])
           }
+        }).catch(res => {
+          if (error && error.apply) {
+            error.apply(this, ['create model failed:' + res])
+          }
+          return false;
         });
+
+        // em... oss can't notify automatic now
+        // setTimeout(() => {
+        //   api.uploadComplete(fileId).catch((res) => {
+        //     if (error && error.apply) {
+        //       error.apply(this, ['Complete upload url failed:' + res])
+        //     }
+        //   });
+        // }, 3000);
       });
     }).catch(res => {
       if (error && error.apply) {

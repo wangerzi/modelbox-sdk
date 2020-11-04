@@ -1,7 +1,8 @@
 import * as axios from 'axios';
 import qs from 'qs';
 
-export const API_URL = 'http://api.mobox3d.com';
+// export const API_URL = 'http://api.mobox3d.com';
+export const API_URL = 'http://localhost:8080';
 let API_TOKEN = ''
 
 export function setToken(token) {
