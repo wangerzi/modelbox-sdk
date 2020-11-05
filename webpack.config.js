@@ -8,12 +8,6 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'modelbox-sdk.js'
   },
-  devServer:{
-    // 配置webpack-dev-server的www目录
-    contentBase:'./dist',
-    compress: true,
-    port: 9000
-  },
   module: {
     rules: [
       {
@@ -26,7 +20,11 @@ module.exports = {
     ]
   },
   // optimization: {
-  //   minimizer: [new UglifyJsPlugin()],
+  //   minimizer: [
+  //     new UglifyJsPlugin({
+  //       test: /\.js(\?.*)?$/i,
+  //     }),
+  //   ],
   // },
   // mode: "production",
   mode: "development"

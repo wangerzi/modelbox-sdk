@@ -1,6 +1,6 @@
 import api from './src/api/modelApi'
 
-var MODELBOX_SDK = {}
+let MODELBOX_SDK = {}
 let VERSION = '0.0.1'
 const TYPE_FILE_MAP = {
   'stp': ['.stp', '.step', '.zip'],
