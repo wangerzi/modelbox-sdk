@@ -90,6 +90,8 @@
     var name = form.querySelector('input[name="name"]').value;
     var comment = form.querySelector('input[name="comment"]').value;
 
+    // 【UI】做个 loading
+    var layerIndex = layui.layer.load(1);
     // 2. 拿到回调之后提交数据库保存
     MODELBOX_SDK.updateToken('5c06b6b8a548d8911e3ccdbdc518fac6');
     MODELBOX_SDK.uploadModel({
@@ -103,6 +105,7 @@
         env: '#fff',
       },
       success: function (res) {
+        layui.layer.close(layerIndex);
         // res.iframe_url 表示嵌入网页的 url
         // res.source_file_url 表示源资源的下载 url
         layui.layer.open({
@@ -119,11 +122,12 @@
         });
       },
       error: function (msg) {
+        layui.layer.close(layerIndex);
         // 这里用到了 UI 框架的提示组件 layer ，根据具体业务情况处理即可
         layui.use(['layer'], function () {
           layui.layer.alert(msg);
         })
-      }
+      },
     });
     return false;
   }
