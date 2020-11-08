@@ -30,6 +30,13 @@
   </blockquote>
   <form action="" class="layui-form" onsubmit="return handleSubmit()" id="modelForm">
     <div class="layui-form-item">
+      <div class="layui-form-label">成功样例</div>
+      <div class="layui-input-block">
+        <iframe src="http://preview.mobox3d.com/index.html#/PreviewModel/EAAYIrBA" width="600" height="400" style="border: none;"></iframe>
+        <p>测试模型文件下载链接：<a href="http://model-box-prod-resource.mobox3d.com/uploads/20201108/xaVBEAAovuoIAMsE.stl" target="_blank">点我下载</a></p>
+      </div>
+    </div>
+    <div class="layui-form-item">
       <label class="layui-form-label">模型类型</label>
       <div class="layui-input-block">
         <select name="type">
@@ -37,6 +44,7 @@
           <option value="stp">STP模型(.stp/.step/.zip)</option>
           <option value="igs">IGS模型(.igs/.iges/.zip)</option>
           <option value="fbx">FBX模型(.stp/.zip)</option>
+          <option value="gltf">FBX模型(.gltf/.glb/.zip)</option>
           <option value="obj">OBJ模型(.obj/.zip)</option>
         </select>
       </div>
@@ -51,6 +59,13 @@
       <div class="layui-form-label">备注</div>
       <div class="layui-input-block">
         <input type="text" name="comment" value="No comment" class="layui-input">
+      </div>
+    </div>
+    <div class="layui-form-item">
+      <div class="layui-form-label">配置</div>
+      <div class="layui-input-block">
+        <textarea name="config" cols="30" rows="10" class="layui-textarea">{"color": "#fff"}</textarea>
+        <p>注：此功能进一步开发中，能实现编辑器的全部配置编辑：<a href="http://preview.mobox3d.com/index.html#/Manage/editor/EAAYIrBA" target="_blank">编辑器示例</a></p>
       </div>
     </div>
     <div class="layui-form-item">
@@ -89,6 +104,7 @@
 
     var name = form.querySelector('input[name="name"]').value;
     var comment = form.querySelector('input[name="comment"]').value;
+    var config = JSON.parse(form.querySelector('textarea[name="config"]').value);
 
     // 【UI】做个 loading
     var layerIndex = layui.layer.load(1);
@@ -101,9 +117,7 @@
         'name': name,
         'comment': comment,
       },
-      modelConfig: {
-        env: '#fff',
-      },
+      modelConfig: config,
       success: function (res) {
         layui.layer.close(layerIndex);
         // res.iframe_url 表示嵌入网页的 url
@@ -112,12 +126,24 @@
           type: 2,
           title: name,
           btn: [
-            '下载源文件'
+            '新窗口打开',
+            '场景编辑器（测试中，敬请期待）',
+            '下载源文件',
           ],
-          yes: function () {
-            window.open(res.source_file_url);
+          btnAlign: 'c',
+          btn1: function () {
+            window.open(res.iframe_url);
+            return false;
           },
-          area: ['500px', '400px'],
+          btn2: function () {
+            window.open(res.editor_url);
+            return false;
+          },
+          btn3: function () {
+            window.open(res.source_file_url);
+            return false;
+          },
+          area: ['600px', '400px'],
           content: res.iframe_url,
         });
       },
