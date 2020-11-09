@@ -1,6 +1,6 @@
 {
   "name": "modelbox-sdk",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "modelbox nodejs sdk.",
   "main": "index.js",
   "scripts": {

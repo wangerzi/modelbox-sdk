@@ -7,9 +7,9 @@
 
 **npm package：**[https://www.npmjs.com/package/modelbox-sdk](https://www.npmjs.com/package/modelbox-sdk)
 
-**Demo地址：**[http://wangerzi.gitee.io/modelbox-sdk/examples/index.html](http://wangerzi.gitee.io/modelbox-sdk/examples/index.html)
+**Demo地址：**[https://wangerzi.gitee.io/modelbox-sdk/examples/index.html](https://wangerzi.gitee.io/modelbox-sdk/examples/index.html)
 
-![GIF](http://preview.mobox3d.com/modelbox-sdk/ScreenGIF.gif)
+![GIF](https://preview.mobox3d.com/modelbox-sdk/ScreenGIF.gif)
 
 ## 版本发布记录
 
@@ -17,14 +17,15 @@
 
 | 版本   | 发布时间         | 连接地址                                                     | 备注                           |
 | ------ | ---------------- | ------------------------------------------------------------ | ------------------------------ |
-| v1.0.4 | 2020-11-08 13:39 | http://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js | 修复 config 为空的问题         |
-| v1.0.3 | 2020-11-08 00:39 | http://preview.mobox3d.com/modelbox-sdk/1.0.3/modelbox-sdk.js | 最初版本，实现基本上传预览功能 |
+| v1.0.5 | 2020-11-09 22:40 | https://preview.mobox3d.com/modelbox-sdk/1.0.5/modelbox-sdk.js | 全体接口https                  |
+| v1.0.4 | 2020-11-09 13:39 | https://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js | 修复 config 为空的问题         |
+| v1.0.3 | 2020-11-09 00:39 | https://preview.mobox3d.com/modelbox-sdk/1.0.3/modelbox-sdk.js | 最初版本，实现基本上传预览功能 |
 
 ## 使用交流&BUG反馈
 
 请扫描群二维码或搜索群号 『555876154』加群
 
-![GIF](http://preview.mobox3d.com/modelbox-sdk/GroupQRCode.jpg)
+![GIF](https://preview.mobox3d.com/modelbox-sdk/GroupQRCode.jpg)
 
 ## 使用方法
 
@@ -42,10 +43,10 @@ import MODELBOX_SDK from 'modelbox-sdk'
 
 #### 方式二：script标签引入
 
-可通过 CDN 的方式引用：http://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js，或者下载到本地，使用 script 的方式引用即可得到 `MODELBOX_SDK` 全局对象
+可通过 CDN 的方式引用：https://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js，或者下载到本地，使用 script 的方式引用即可得到 `MODELBOX_SDK` 全局对象
 
 ```html
-<script src="http://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js"></script>
+<script src="https://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js"></script>
 ```
 
 ### 初始化
@@ -65,7 +66,7 @@ MODELBOX_SDK.updateToken('5c06b6b8a548d8911e3ccdbdc518fac6');
 | file        | File     | 上传的单个文件对象                                           |
 | type        | string   | stl/stp/igs/fbx/obj/gltf，不同类型对应不同的可上传文件后缀   |
 | config      | object   | .name: 模型名称，.comment: 模型备注（预留参数，用于展示）    |
-| modelConfig | object   | 一些配置，能够完成[编辑器](http://preview.mobox3d.com/index.html#/Manage/editor/EAAYIrBA)上的所有效果配置，**整理中** |
+| modelConfig | object   | 一些配置，能够完成[编辑器](https://preview.mobox3d.com/index.html#/Manage/editor/EAAYIrBA)上的所有效果配置，**整理中** |
 | success     | callback | 调用成功触发此函数回调，处理成功后触发，第一个参数为响应的数据，包含嵌入式网页URL，编辑器URL，原始资源下载URL |
 | error       | callback | 调用失败触发此函数回调，第一个参数为错误原因的字符串         |
 
@@ -112,7 +113,7 @@ MODELBOX_SDK.uploadModel({
 在上传的时候，保存好嵌入网页的url（参数：`res.iframe_url`）即可，使用 iframe 标签进行页面嵌入
 
 ```html
-<iframe src="http://preview.mobox3d.com/index.html#/PreviewModel/EAAYIrBA" width="600" height="400"></iframe>
+<iframe src="https://preview.mobox3d.com/index.html#/PreviewModel/EAAYIrBA" width="600" height="400"></iframe>
 ```
 
 ## LICENCE
