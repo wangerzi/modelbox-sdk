@@ -35,7 +35,8 @@ export async function post(url, postData, option = {}) {
                 "X-api-key": API_TOKEN
             }
         })
-        axios.post(url, qs.stringify(postData), option).then((res) => {
+        // automatic json post
+        axios.post(url, postData, option).then((res) => {
             const data = res.data;
             if (data.code !== 200) {
                 reject(data.message, data);

@@ -104,7 +104,11 @@
 
     var name = form.querySelector('input[name="name"]').value;
     var comment = form.querySelector('input[name="comment"]').value;
-    var config = JSON.parse(form.querySelector('textarea[name="config"]').value);
+    var configJson = form.querySelector('textarea[name="config"]').value;
+    var config = {};
+    if (configJson) {
+      config = JSON.parse(configJson);
+    }
 
     // 【UI】做个 loading
     var layerIndex = layui.layer.load(1);

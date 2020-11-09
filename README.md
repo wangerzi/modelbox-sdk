@@ -1,9 +1,30 @@
 # Modelbox Browser SDK
-此SDK用于简化 Modelbox 模型API的调用，码云地址：[https://gitee.com/wangerzi/modelbox-sdk](https://gitee.com/wangerzi/modelbox-sdk)，Github地址：[https://github.com/wangerzi/modelbox-sdk](https://github.com/wangerzi/modelbox-sdk)
+此SDK用于简化 Modelbox 模型API的调用，仅需前端传入模型文件即可实现嵌入式的模型预览
 
-Demo地址：[http://wangerzi.gitee.io/modelbox-sdk/examples/index.html](http://wangerzi.gitee.io/modelbox-sdk/examples/index.html)
+**码云地址：**[https://gitee.com/wangerzi/modelbox-sdk](https://gitee.com/wangerzi/modelbox-sdk)
 
-![GIF](ScreenGIF.gif)
+**Github地址：**[https://github.com/wangerzi/modelbox-sdk](https://github.com/wangerzi/modelbox-sdk)
+
+**npm package：**[https://www.npmjs.com/package/modelbox-sdk](https://www.npmjs.com/package/modelbox-sdk)
+
+**Demo地址：**[http://wangerzi.gitee.io/modelbox-sdk/examples/index.html](http://wangerzi.gitee.io/modelbox-sdk/examples/index.html)
+
+![GIF](http://preview.mobox3d.com/modelbox-sdk/ScreenGIF.gif)
+
+## 版本发布记录
+
+> 注：请尽量使用最新版本的 SDK，避免隐性 BUG
+
+| 版本   | 发布时间         | 连接地址                                                     | 备注                           |
+| ------ | ---------------- | ------------------------------------------------------------ | ------------------------------ |
+| v1.0.4 | 2020-11-08 13:39 | http://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js | 修复 config 为空的问题         |
+| v1.0.3 | 2020-11-08 00:39 | http://preview.mobox3d.com/modelbox-sdk/1.0.3/modelbox-sdk.js | 最初版本，实现基本上传预览功能 |
+
+## 使用交流&BUG反馈
+
+请扫描群二维码或搜索群号 『555876154』加群
+
+![GIF](http://preview.mobox3d.com/modelbox-sdk/GroupQRCode.jpg)
 
 ## 使用方法
 
@@ -21,10 +42,10 @@ import MODELBOX_SDK from 'modelbox-sdk'
 
 #### 方式二：script标签引入
 
-可通过 CDN 的方式引用：http://preview.mobox3d.com/modelbox-sdk/1.0.3/modelbox-sdk.js，或者下载到本地，使用 script 的方式引用即可得到 `MODELBOX_SDK` 全局对象
+可通过 CDN 的方式引用：http://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js，或者下载到本地，使用 script 的方式引用即可得到 `MODELBOX_SDK` 全局对象
 
 ```html
-<script src="http://preview.mobox3d.com/modelbox-sdk/1.0.3/modelbox-sdk.js"></script>
+<script src="http://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js"></script>
 ```
 
 ### 初始化
@@ -66,24 +87,24 @@ MODELBOX_SDK.updateToken('5c06b6b8a548d8911e3ccdbdc518fac6');
 var file = form.querySelector('input[type="file"]');
 // 将选择的 File 对象传入到 SDK 中，比如这里使用了第一个文件，索引为 0
 MODELBOX_SDK.uploadModel({
-      file: file.files[0],
-      type: 'stl',
-      config: {
-        'name': name,
-        'comment': comment,
-      },
-      modelConfig: config,
-      success: function (res) {
-        layui.layer.close(layerIndex);
-        // res.iframe_url 表示嵌入网页的 url
-        // res.editor_url 表示编辑器网页 url
-        // res.source_file_url 表示源资源的下载 url
-        console.log(res);
-      },
-      error: function (msg) {
-       console.error(msg); // 错误信息
-      },
-    });
+	file: file.files[0],
+	type: 'stl',
+	config: {
+		'name': name,
+		'comment': comment,
+	},
+	modelConfig: config,
+	success: function (res) {
+		layui.layer.close(layerIndex);
+		// res.iframe_url 表示嵌入网页的 url
+		// res.editor_url 表示编辑器网页 url
+		// res.source_file_url 表示源资源的下载 url
+		console.log(res);
+	},
+	error: function (msg) {
+		console.error(msg); // 错误信息
+	},
+});	
 ```
 
 ### 查看模型
@@ -95,4 +116,5 @@ MODELBOX_SDK.uploadModel({
 ```
 
 ## LICENCE
+
 MIT
