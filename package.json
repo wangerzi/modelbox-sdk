@@ -1,7 +1,7 @@
 {
   "name": "modelbox-sdk",
-  "version": "1.0.5",
-  "description": "modelbox nodejs sdk.",
+  "version": "1.0.6",
+  "description": "modelbox npm sdk.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
