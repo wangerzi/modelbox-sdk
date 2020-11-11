@@ -15,7 +15,7 @@
 
 > 注：请尽量使用最新版本的 SDK，避免隐性 BUG
 
-| 版本   | 发布时间         | 连接地址                                                     | 备注                           |
+| 版本   | 发布时间         | CDN地址                                                     | 备注                           |
 | ------ | ---------------- | ------------------------------------------------------------ | ------------------------------ |
 | v1.0.6 | 2020-11-11 23:44 | https://preview.mobox3d.com/modelbox-sdk/1.0.6/modelbox-sdk.js | 更新文档优化并npm包大小        |
 | v1.0.5 | 2020-11-09 22:40 | https://preview.mobox3d.com/modelbox-sdk/1.0.5/modelbox-sdk.js | 全体接口https                  |
@@ -89,10 +89,10 @@ import MODELBOX_SDK from 'modelbox-sdk'
 
 #### 方式二：script标签引入
 
-可通过 CDN 的方式引用：https://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js，或者下载到本地，使用 script 的方式引用即可得到 `MODELBOX_SDK` 全局对象
+可通过 CDN 的方式引用： https://preview.mobox3d.com/modelbox-sdk/1.0.5/modelbox-sdk.js ，或者下载到本地，使用 script 的方式引用即可得到 `MODELBOX_SDK` 全局对象
 
 ```html
-<script src="https://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js"></script>
+<script src="https://preview.mobox3d.com/modelbox-sdk/1.0.5/modelbox-sdk.js"></script>
 ```
 
 ### 初始化
