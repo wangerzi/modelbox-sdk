@@ -4,7 +4,7 @@ let MODELBOX_SDK = {}
 let VERSION = '0.0.1'
 const TYPE_FILE_MAP = {
   'stp': ['.stp', '.step', '.zip'],
-  'igs': ['.igs', '.iges', '.zip'],
+  'iges': ['.igs', '.iges', '.zip'],
   'stl': ['.stl', '.zip'],
   'obj': ['.obj', '.zip'],
   'fbx': ['.fbx', '.zip'],
@@ -55,7 +55,7 @@ function makeObject(object) {
       return false;
     }
     const ext = '.' + splitName[splitName.length - 1];
-    if (!TYPE_FILE_MAP[type] || !TYPE_FILE_MAP[type].includes(ext)) {
+    if (!TYPE_FILE_MAP[type] || !TYPE_FILE_MAP[type].includes(ext.toLowerCase())) {
       if (error && error.apply) {
         error.apply(this, ['Model ' + type + ' only support ' + TYPE_FILE_MAP[type].join(',')])
       }
