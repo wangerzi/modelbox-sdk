@@ -8,7 +8,7 @@
     "build": "./node_modules/.bin/webpack --config webpack.prod.js",
     "dev": "./node_modules/.bin/webpack-dev-server --hot --config webpack.dev.js"
   },
-  "author": "",
+  "author": "github.com/wangerzi",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.0",
