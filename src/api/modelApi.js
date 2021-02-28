@@ -4,7 +4,7 @@ async function updateToken(token) {
   return setToken(token)
 }
 
-async function createFile(config = {}) {
+function createFile(config = {}) {
   config = Object.assign({
     is_public: 1,
     ext: '.zip'
@@ -51,13 +51,17 @@ async function createModel(config) {
   }))
 }
 
-async function putFile(url, file) {
+function putFile(url, file) {
   return new Promise(((resolve, reject) => {
     const reader = new FileReader()
     reader.readAsArrayBuffer(file)
-    reader.onload = (e) => {
-      putObject(url, e.target.result)
-      resolve(true)
+    reader.onload = async (e) => {
+      try {
+        await putObject(url, e.target.result)
+        resolve(true)
+      } catch (res) {
+        reject(res)
+      }
     }
     reader.onerror = () => {
       reject('Load file Error')

@@ -1,4 +1,4 @@
-import * as axios from 'axios';
+import {get as axiosGet, post as axiosPost, put as axiosPut} from 'axios';
 
 export const API_URL = 'https://api.mobox3d.com';
 // export const API_URL = 'http://localhost:8088';
@@ -7,14 +7,14 @@ let API_TOKEN = ''
 export function setToken(token) {
     API_TOKEN = token
 }
-export async function get(url, option = {}) {
+export function get(url, option = {}) {
     return new Promise(((resolve, reject) => {
         option = Object.assign(option, {
             headers: {
                 "X-api-key": API_TOKEN
             }
         })
-        axios.get(url, option).then((res) => {
+        axiosGet(url, option).then((res) => {
             const data = res.data;
             if (data.code !== 200) {
                 reject(data.message);
@@ -27,7 +27,7 @@ export async function get(url, option = {}) {
     }));
 }
 
-export async function post(url, postData, option = {}) {
+export function post(url, postData, option = {}) {
     return new Promise(((resolve, reject) => {
         option = Object.assign(option, {
             headers: {
@@ -35,7 +35,7 @@ export async function post(url, postData, option = {}) {
             }
         })
         // automatic json post
-        axios.post(url, postData, option).then((res) => {
+        axiosPost(url, postData, option).then((res) => {
             const data = res.data;
             if (data.code !== 200) {
                 reject(data.message, data);
@@ -49,7 +49,7 @@ export async function post(url, postData, option = {}) {
 }
 
 export async function putObject(url, body) {
-    axios.put(url, body, {
+    return axiosPut(url, body, {
         headers: {
             'Content-Type': '',
         }

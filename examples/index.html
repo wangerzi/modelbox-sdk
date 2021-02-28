@@ -111,7 +111,7 @@
     }
 
     // 【UI】做个 loading
-    var layerIndex = layui.layer.load(1);
+    var layerIndex = layui.layer.msg("文件上传中...", {time: 0, shade: 0.3});
     // 2. 拿到回调之后提交数据库保存
     MODELBOX_SDK.updateToken('5c06b6b8a548d8911e3ccdbdc518fac6');
     MODELBOX_SDK.uploadModel({
