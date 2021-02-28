@@ -15,8 +15,9 @@
 
 > 注：请尽量使用最新版本的 SDK，避免隐性 BUG
 
-| 版本   | 发布时间         | CDN地址                                                     | 备注                           |
+| 版本   | 发布时间         | CDN地址                                                      | 备注                           |
 | ------ | ---------------- | ------------------------------------------------------------ | ------------------------------ |
+| v1.0.7 | 2021-02-28 20:37 | https://preview.mobox3d.com/modelbox-sdk/1.0.7/modelbox-sdk.js | 修复bug优化体验                        |
 | v1.0.6 | 2020-11-11 23:44 | https://preview.mobox3d.com/modelbox-sdk/1.0.6/modelbox-sdk.js | 更新文档优化并npm包大小        |
 | v1.0.5 | 2020-11-09 22:40 | https://preview.mobox3d.com/modelbox-sdk/1.0.5/modelbox-sdk.js | 全体接口https                  |
 | v1.0.4 | 2020-11-09 13:39 | https://preview.mobox3d.com/modelbox-sdk/1.0.4/modelbox-sdk.js | 修复 config 为空的问题         |
@@ -52,7 +53,7 @@
 
 ## 使用交流&BUG反馈
 
-请扫描群二维码或搜索群号 『 **555876154** 』加群
+请扫描群二维码或搜索群号 『 **555876154** 』加群，如需商用部署请加群或直接联系 admin@wj2015.com
 
 ![GIF](https://preview.mobox3d.com/modelbox-sdk/GroupQRCode.jpg)
 
