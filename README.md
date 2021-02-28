@@ -46,26 +46,9 @@
 
 ## 模型处理及渲染流程
 
-大致流程如下所示，**前端仅需上传文件**，然后等待模型压缩处理完成即可
+大致流程如下所示，**前端仅需上传文件**，然后等待模型处理完成即可，后端会自动做 **压缩包解压**、**转换**、**模型压缩**、**上传分发** 等一系列工作
 
-```flow
-st=>start: Start
-choose=>operation: 选择模型文件
-upload=>operation: 边缘节点上传模型
-continue=>condition: 模型处理完成
-unzip=>operation: 文件上传解压
-check=>operation: 检查模型状态
-convert=>operation: 执行模型转换压缩
-reupload=>operation: 压缩产物上传至云端
-view=>operation: 查看模型效果
-download=>operation: 下载资源
-render=>operation: 渲染模型效果
-e=>end
-st->choose->upload->continue
-continue(yes)->view->download
-continue(no)->unzip->convert->download
-download->render->e
-```
+![GIF](https://preview.mobox3d.com/modelbox-sdk/3dmodel-flow.jpg)
 
 ## 使用交流&BUG反馈
 
